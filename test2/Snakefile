@@ -1,0 +1,41 @@
+configfile: "config.yaml"
+
+
+# サブモジュールの定義
+module module1:
+    snakefile:
+        "modules/module1/Snakefile"
+    config:
+        config
+
+
+module module2:
+    snakefile:
+        "modules/module2/Snakefile"
+    config:
+        config
+
+
+module module3:
+    snakefile:
+        "modules/module3/Snakefile"
+    config:
+        config
+
+
+# if config is specified in module, the configfile statement in module is ignored
+
+
+# 全体の出力
+rule all:
+    input:
+        expand("data/{sample}_final_result.txt", sample=config.get("samples")),
+
+
+use rule * from module1 exclude all
+
+
+use rule * from module2 exclude all
+
+
+use rule * from module3 exclude all

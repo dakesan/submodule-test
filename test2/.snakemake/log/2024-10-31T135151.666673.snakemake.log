@@ -1,0 +1,7 @@
+host: ip-172-31-34-149
+Building DAG of jobs...
+MissingInputException in rule all in file /home/ubuntu/Main/WORKFLOW/submodule-test/test2/Snakefile, line 21:
+Missing input files for rule all:
+    affected files:
+        data/sample1_final_result.txt
+        data/sample2_final_result.txt

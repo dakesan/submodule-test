@@ -1,0 +1,15 @@
+configfile: "config.yaml"
+
+
+rule all:
+    input:
+        expand("data/{sample}_step2_result.txt", sample=config["samples"]),
+
+
+rule step2:
+    input:
+        "data/{sample}_step1_result.txt",
+    output:
+        "data/{sample}_step2_result.txt",
+    shell:
+        "echo 'Step 2 complete for {wildcards.sample}' > {output}"

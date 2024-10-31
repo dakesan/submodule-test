@@ -1,0 +1,8 @@
+host: ip-172-31-34-149
+Building DAG of jobs...
+MissingInputException in rule step1 in file /home/ubuntu/Main/WORKFLOW/submodule-test/test2/Snakefile, line 34:
+Missing input files for rule step1:
+    output: data/sample1_step2_result.txt, data/sample2_step2_result.txt
+    affected files:
+        data/sample2_step1_result.txt
+        data/sample1_step1_result.txt

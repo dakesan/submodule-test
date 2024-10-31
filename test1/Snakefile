@@ -1,0 +1,28 @@
+rule all:
+    input:
+        "data/final_result.txt",
+
+
+rule step1:
+    output:
+        "data/step1_result.txt",
+    shell:
+        "echo 'Step 1 complete' > {output}"
+
+
+rule step2:
+    input:
+        rules.step1.output,
+    output:
+        "data/step2_result.txt",
+    shell:
+        "echo 'Step 2 complete' > {output}"
+
+
+rule final_step:
+    input:
+        rules.step2.output,
+    output:
+        "data/final_result.txt",
+    shell:
+        "echo 'Final result' > {output}"

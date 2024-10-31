@@ -1,0 +1,54 @@
+host: ip-172-31-34-149
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+all               1
+final_step        2
+total             3
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Oct 31 14:18:54 2024]
+localrule final_step:
+    input: data/sample2_step2_result.txt
+    output: data/sample2_final_result.txt
+    jobid: 4
+    reason: Missing output files: data/sample2_final_result.txt
+    wildcards: sample=sample2
+    resources: tmpdir=/tmp
+
+
+[Thu Oct 31 14:18:54 2024]
+localrule final_step:
+    input: data/sample1_step2_result.txt
+    output: data/sample1_final_result.txt
+    jobid: 1
+    reason: Missing output files: data/sample1_final_result.txt
+    wildcards: sample=sample1
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:18:54 2024]
+Finished job 4.
+1 of 3 steps (33%) done
+[Thu Oct 31 14:18:54 2024]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:18:54 2024]
+localrule all:
+    input: data/sample1_final_result.txt, data/sample2_final_result.txt
+    jobid: 0
+    reason: Input files updated by another job: data/sample1_final_result.txt, data/sample2_final_result.txt
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:18:54 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-10-31T141854.317336.snakemake.log

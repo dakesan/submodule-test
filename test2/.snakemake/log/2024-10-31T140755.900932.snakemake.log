@@ -1,0 +1,114 @@
+host: ip-172-31-34-149
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+all               1
+final_step        2
+step1             2
+step2             2
+total             7
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule step1:
+    output: data/sample1_step1_result.txt
+    jobid: 3
+    reason: Missing output files: data/sample1_step1_result.txt
+    wildcards: sample=sample1
+    resources: tmpdir=/tmp
+
+
+[Thu Oct 31 14:07:55 2024]
+localrule step1:
+    output: data/sample2_step1_result.txt
+    jobid: 6
+    reason: Missing output files: data/sample2_step1_result.txt
+    wildcards: sample=sample2
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 3.
+1 of 7 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule step2:
+    input: data/sample1_step1_result.txt
+    output: data/sample1_step2_result.txt
+    jobid: 2
+    reason: Missing output files: data/sample1_step2_result.txt; Input files updated by another job: data/sample1_step1_result.txt
+    wildcards: sample=sample1
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 6.
+2 of 7 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule step2:
+    input: data/sample2_step1_result.txt
+    output: data/sample2_step2_result.txt
+    jobid: 5
+    reason: Missing output files: data/sample2_step2_result.txt; Input files updated by another job: data/sample2_step1_result.txt
+    wildcards: sample=sample2
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 2.
+3 of 7 steps (43%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule final_step:
+    input: data/sample1_step2_result.txt
+    output: data/sample1_final_result.txt
+    jobid: 1
+    reason: Missing output files: data/sample1_final_result.txt; Input files updated by another job: data/sample1_step2_result.txt
+    wildcards: sample=sample1
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 5.
+4 of 7 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule final_step:
+    input: data/sample2_step2_result.txt
+    output: data/sample2_final_result.txt
+    jobid: 4
+    reason: Missing output files: data/sample2_final_result.txt; Input files updated by another job: data/sample2_step2_result.txt
+    wildcards: sample=sample2
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 1.
+5 of 7 steps (71%) done
+[Thu Oct 31 14:07:55 2024]
+Finished job 4.
+6 of 7 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 14:07:55 2024]
+localrule all:
+    input: data/sample1_final_result.txt, data/sample2_final_result.txt
+    jobid: 0
+    reason: Input files updated by another job: data/sample1_final_result.txt, data/sample2_final_result.txt
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 14:07:55 2024]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: .snakemake/log/2024-10-31T140755.900932.snakemake.log
